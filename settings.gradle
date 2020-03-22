@@ -1,0 +1,6 @@
+rootProject.name = 'push-sc'
+include 'config-center'
+include 'source-man'
+include 'persistent'
+include 'protocol'
+

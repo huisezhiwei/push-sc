@@ -1,0 +1,87 @@
+// 此处配置的是gradle脚本本身的依赖，主要是插件仓库和插件版本
+buildscript {
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        jcenter()
+    }
+    // 此处引入 依赖管理 和 spring boot gradle 插件
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.5.RELEASE"
+        // aspectj 插件
+        classpath "io.freefair.gradle:aspectj-plugin:4.1.6"
+//        classpath "com.github.sedovalx.gradle:gradle-aspectj-binary:1.0.45"
+    }
+
+}
+
+// 这里，配置的是根项目和所有子项目的通用配置，主要是使用的插件， 元数据， 依赖库等等
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.freefair.aspectj.post-compile-weaving"
+
+    group = 'com.xiaohui'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    ext {
+        springCloudVersion = 'Hoxton.SR3'
+        springBootVersion = '2.2.5.RELEASE'
+        aspectjVersion = '1.9.5'
+    }
+
+    repositories {
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+            mavenCentral()
+        }
+    }
+
+    dependencies {
+
+        compileOnly 'org.projectlombok:lombok:1.18.12'
+        annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+        //AspectJ
+        implementation 'org.aspectj:aspectjrt:1.9.5'
+        aspect 'org.springframework:spring-aspects'
+        implementation 'org.springframework:spring-instrument'
+
+        implementation 'com.alibaba:fastjson:1.2.41'
+        implementation 'org.springframework.cloud:spring-cloud-starter'
+        implementation 'org.springframework.cloud:spring-cloud-stream'
+        implementation('org.springframework.cloud:spring-cloud-starter-zookeeper-all') {
+            exclude group: 'org.apache.zookeeper', module: 'zookeeper'
+        }
+        implementation('org.apache.zookeeper:zookeeper:3.4.12') {
+            exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        }
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+        testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
+
+    }
+
+    dependencyManagement {
+        imports {
+            // 引入cloud的依赖表， spring-boot的依赖表，已经在插件中应用
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+}
+
+
