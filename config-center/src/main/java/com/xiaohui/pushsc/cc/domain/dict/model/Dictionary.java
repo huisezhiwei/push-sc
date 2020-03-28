@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
  * create on 2020-03-14
  */
 @Entity
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
 @Configurable
 public class Dictionary extends EntityBase<Dictionary> {
 
