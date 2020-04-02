@@ -1,4 +1,4 @@
-package com.xiaohui.pushsc.cc.domain.base;
+package com.xiaohui.pushsc.source.domain.base;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
