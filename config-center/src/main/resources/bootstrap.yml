@@ -1,3 +1,9 @@
 spring:
   application:
     name: config-center
+  cloud:
+    zookeeper:
+      config:
+        enabled: true
+        root: configuration
+        defaultContext: application
