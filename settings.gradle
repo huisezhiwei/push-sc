@@ -3,4 +3,5 @@ include 'config-center'
 include 'source-man'
 include 'persistent'
 include 'protocol'
+include 'controller'
 
