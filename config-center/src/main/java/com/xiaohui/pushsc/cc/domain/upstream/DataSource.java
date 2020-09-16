@@ -10,12 +10,9 @@ public interface DataSource {
 
     String getSourceCode();
 
-
     String getSecret();
 
-
     String getMessageChannel();
-
 
     String getAckChannel();
 

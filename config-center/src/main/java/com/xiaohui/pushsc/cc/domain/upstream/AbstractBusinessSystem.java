@@ -1,40 +1,45 @@
 package com.xiaohui.pushsc.cc.domain.upstream;
 
+import lombok.AccessLevel;
+import lombok.Setter;
+
 import javax.persistence.MappedSuperclass;
 
 /**
  * 业务系统
+ * 需要使用 mappedSuperclass 将属性映射给子类
+ * 需要提供 protected 级别的set方法，让子类注入属性
  *
  * @author xiaohui
  * create on 2020-09-13
  */
-//todo 子类如果要识别变量，需要这个注解
 @MappedSuperclass
+@Setter(AccessLevel.PROTECTED)
 public abstract class AbstractBusinessSystem implements DataSource {
 
-    protected String systemCode;
-    protected String systemSecret;
-    protected String systemDescribe;
+    protected String code;
+    protected String secret;
+    protected String note;
     protected boolean active;
 
     @Override
     public String getSourceCode() {
-        return systemCode;
+        return code;
     }
 
     @Override
     public String getSecret() {
-        return systemSecret;
+        return secret;
     }
 
     @Override
     public String getMessageChannel() {
-        return systemCode + "-message";
+        return code + "-message";
     }
 
     @Override
     public String getAckChannel() {
-        return systemCode + "-ack";
+        return code + "-ack";
     }
 
     @Override

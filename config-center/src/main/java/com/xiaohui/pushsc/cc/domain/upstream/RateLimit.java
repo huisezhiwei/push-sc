@@ -7,7 +7,7 @@ import lombok.Value;
  * create on 2020-09-14
  */
 @Value
-class RateLimit {
+public class RateLimit {
 
     private long refreshRate;
     private long refreshCount;
