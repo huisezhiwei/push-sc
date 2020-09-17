@@ -1,4 +1,4 @@
-package com.xiaohui.pushsc.cc.domain.base;
+package com.xiaohui.pushsc.cc.domain.account;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

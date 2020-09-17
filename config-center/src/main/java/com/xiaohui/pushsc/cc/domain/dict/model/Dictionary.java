@@ -1,12 +1,12 @@
 package com.xiaohui.pushsc.cc.domain.dict.model;
 
-import com.xiaohui.pushsc.cc.domain.base.EntityBase;
 import com.xiaohui.pushsc.protocol.source.DictionaryResource;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 @Configurable
-public class Dictionary extends EntityBase<Dictionary> {
+public class Dictionary extends AbstractPersistable<Long> {
 
     @Autowired
     @Getter(AccessLevel.NONE)
@@ -52,7 +52,7 @@ public class Dictionary extends EntityBase<Dictionary> {
     private Long parentId;
 
     public Dictionary(DictionaryResource resource) {
-        this.id = resource.id;
+        setId(resource.id);
         this.dictCode = resource.code;
         this.dictKey = resource.key;
         this.dictValue = resource.value;
@@ -62,7 +62,7 @@ public class Dictionary extends EntityBase<Dictionary> {
     }
 
     public List<Dictionary> subDictionarySet() {
-        return dictionaryJPARepository.findByParentId(id);
+        return dictionaryJPARepository.findByParentId(getId());
     }
 
     public Optional<Dictionary> parentDictionary() {
@@ -73,7 +73,7 @@ public class Dictionary extends EntityBase<Dictionary> {
 
         List<Long> subIds = subDictionarySet().stream().map(Dictionary::getId).collect(Collectors.toList());
 
-        return new DictionaryResource(id, dictCode, dictKey, dictValue, scope, sort, active, subIds);
+        return new DictionaryResource(getId(), dictCode, dictKey, dictValue, scope, sort, active, subIds);
 
     }
 }

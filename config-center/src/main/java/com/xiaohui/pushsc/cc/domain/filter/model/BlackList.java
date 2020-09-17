@@ -1,10 +1,10 @@
 package com.xiaohui.pushsc.cc.domain.filter.model;
 
-import com.xiaohui.pushsc.cc.domain.base.Account;
-import com.xiaohui.pushsc.cc.domain.base.AccountId;
-import com.xiaohui.pushsc.cc.domain.base.EntityBase;
+import com.xiaohui.pushsc.cc.domain.account.Account;
+import com.xiaohui.pushsc.cc.domain.account.AccountId;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -19,7 +19,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class BlackList extends EntityBase<BlackList> {
+public class BlackList extends AbstractPersistable<Long> {
 
     private String code;
     private String type;
