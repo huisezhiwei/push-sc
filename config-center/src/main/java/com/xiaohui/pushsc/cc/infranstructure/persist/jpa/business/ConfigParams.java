@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * @author xiaohui
  * create on 2020-09-14
  */
-@Table(name = "tb_message_source_extend")
+@Table(name = "message_source_extend")
 @NoArgsConstructor
 @Entity
 public class ConfigParams extends AbstractPersistable<Long> {

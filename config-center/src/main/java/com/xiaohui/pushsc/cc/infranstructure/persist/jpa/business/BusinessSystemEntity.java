@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * @author xiaohui
  * create on 2020-09-14
  */
-@Table(name = "tb_message_source")
+@Table(name = "message_source")
 @Entity
 @NoArgsConstructor
 @RepositoryEventHandler
