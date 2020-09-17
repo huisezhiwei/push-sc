@@ -1,7 +1,7 @@
 package com.xiaohui.pushsc.cc.infranstructure.persist.jpa;
 
 import com.xiaohui.pushsc.cc.domain.upstream.Config;
-import com.xiaohui.pushsc.cc.infranstructure.persist.jpa.imp.BusinessSystemEntity;
+import com.xiaohui.pushsc.cc.infranstructure.persist.jpa.business.BusinessSystemEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

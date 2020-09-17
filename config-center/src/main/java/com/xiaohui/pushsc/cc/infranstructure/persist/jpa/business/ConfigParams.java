@@ -1,8 +1,12 @@
-package com.xiaohui.pushsc.cc.infranstructure.persist.jpa.imp;
+package com.xiaohui.pushsc.cc.infranstructure.persist.jpa.business;
 
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * @author xiaohui
@@ -11,17 +15,13 @@ import javax.persistence.*;
 @Table(name = "tb_message_source_extend")
 @NoArgsConstructor
 @Entity
-public class ConfigParams {
+public class ConfigParams extends AbstractPersistable<Long> {
 
     public ConfigParams(String code, String value, BusinessSystemEntity source) {
         this.code = code;
         this.value = value;
         this.source = source;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     private String code;
     private String value;

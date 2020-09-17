@@ -1,6 +1,6 @@
 package com.xiaohui.pushsc.cc.infranstructure.persist.jpa;
 
-import com.xiaohui.pushsc.cc.infranstructure.persist.jpa.imp.ConfigParams;
+import com.xiaohui.pushsc.cc.infranstructure.persist.jpa.business.ConfigParams;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
