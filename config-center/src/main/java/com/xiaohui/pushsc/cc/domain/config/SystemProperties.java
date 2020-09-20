@@ -1,6 +1,11 @@
 package com.xiaohui.pushsc.cc.domain.config;
 
+import com.alibaba.fastjson.JSON;
 import lombok.Data;
+import org.springframework.integration.dsl.Transformers;
+import org.springframework.messaging.support.MessageBuilder;
+
+import java.util.Map;
 
 /**
  * 系统参数
