@@ -1,11 +1,6 @@
-package com.xiaohui.pushsc.cc.domain.config;
+package com.xiaohui.pushsc.protocol.config;
 
-import com.alibaba.fastjson.JSON;
 import lombok.Data;
-import org.springframework.integration.dsl.Transformers;
-import org.springframework.messaging.support.MessageBuilder;
-
-import java.util.Map;
 
 /**
  * 系统参数
@@ -22,7 +17,6 @@ public class SystemProperties {
     private DataSource dataSource = new DataSource();
     private Redis redis = new Redis();
     private Kafka kafka = new Kafka();
-
 
     @Data
     public static class DataSource {
@@ -42,5 +36,4 @@ public class SystemProperties {
     public static class Kafka {
         private String server = "localhost";
     }
-
 }

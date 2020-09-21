@@ -5,5 +5,3 @@ spring:
     zookeeper:
       config:
         enabled: true
-        root: configuration
-        defaultContext: application
