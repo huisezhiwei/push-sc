@@ -1,14 +1,13 @@
 package com.xiaohui.pushsc.cc.infranstructure.convert.objectmapper;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleDeserializers;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.module.SimpleSerializers;
 import com.xiaohui.pushsc.cc.domain.dict.model.Dictionary;
 import com.xiaohui.pushsc.protocol.source.DictionaryResource;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
 
 import java.io.IOException;
 
@@ -31,8 +30,9 @@ public class DictionaryMapper extends SimpleModule {
                 gen.writeStringField("key", value.getDictKey());
                 gen.writeStringField("value", value.getDictValue());
                 gen.writeStringField("scope", value.getScope());
-                gen.writeNumberField("sort", value.getSort());
-                gen.writeBooleanField("active", value.isActive());
+                gen.writeNumberField("sort", value.getSort() != null ? value.getSort() : 0);
+                gen.writeBooleanField("active", value.getActive() != null ? value.getActive() : false);
+                gen.writeNumberField("parentId", value.getParentId());
                 gen.writeArrayFieldStart("subIds");
                 for (Dictionary dictionary : value.subDictionarySet()) {
                     gen.writeNumber(dictionary.getId());
@@ -47,13 +47,14 @@ public class DictionaryMapper extends SimpleModule {
         });
         context.addSerializers(serializer);
 
-        // 从json，序列化成对象是没有问题的。
         SimpleDeserializers deserializers = new SimpleDeserializers();
+
         deserializers.addDeserializer(Dictionary.class, new JsonDeserializer<Dictionary>() {
             @Override
             public Dictionary deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-                ObjectMapper mapper = new ObjectMapper();
-                DictionaryResource resource = mapper.treeToValue(p.readValueAsTree(), DictionaryResource.class);
+                JsonNode node = p.getCodec().readTree(p);
+                ObjectMapper op = new ObjectMapper();
+                DictionaryResource resource = op.convertValue(node, DictionaryResource.class);
 
                 return new Dictionary(resource);
             }

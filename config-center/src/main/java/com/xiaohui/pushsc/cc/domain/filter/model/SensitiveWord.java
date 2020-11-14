@@ -1,8 +1,8 @@
 package com.xiaohui.pushsc.cc.domain.filter.model;
 
+import com.xiaohui.pushsc.cc.infranstructure.persist.base.EntityModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 
@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @NoArgsConstructor
-public class SensitiveWord extends AbstractPersistable<Long> {
+public class SensitiveWord extends EntityModel<Long> {
 
     private String word;
     /**

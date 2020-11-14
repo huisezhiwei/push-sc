@@ -2,6 +2,7 @@ package com.xiaohui.pushsc.cc.domain.filter.model;
 
 import com.xiaohui.pushsc.cc.domain.account.Account;
 import com.xiaohui.pushsc.cc.domain.account.AccountId;
+import com.xiaohui.pushsc.cc.infranstructure.persist.base.EntityModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -19,7 +20,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class BlackList extends AbstractPersistable<Long> {
+public class BlackList extends EntityModel<Long> {
 
     private String code;
     private String type;

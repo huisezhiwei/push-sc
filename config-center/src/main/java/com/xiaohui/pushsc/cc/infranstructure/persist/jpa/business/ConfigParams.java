@@ -1,5 +1,6 @@
 package com.xiaohui.pushsc.cc.infranstructure.persist.jpa.business;
 
+import com.xiaohui.pushsc.cc.infranstructure.persist.base.EntityModel;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "message_source_extend")
 @NoArgsConstructor
 @Entity
-public class ConfigParams extends AbstractPersistable<Long> {
+public class ConfigParams extends EntityModel<Long> {
 
     public ConfigParams(String code, String value, BusinessSystemEntity source) {
         this.code = code;
