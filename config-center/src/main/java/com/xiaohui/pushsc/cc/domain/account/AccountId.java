@@ -1,5 +1,8 @@
 package com.xiaohui.pushsc.cc.domain.account;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
@@ -10,6 +13,7 @@ import java.io.Serializable;
  * create on 2020-03-28
  */
 @Embeddable
+@Getter
 public class AccountId implements Serializable {
 
     private String accountNumber;

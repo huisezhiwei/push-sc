@@ -56,6 +56,7 @@ public class SystemPropertiesService implements InitializingBean {
 
             }
 
+            // 这里使用Transformers api , 是为了将数据扁平化并转换成容器能够直接使用的 properties 格式
             SystemProperties payload = (SystemProperties) Transformers.fromMap(SystemProperties.class)
                     .transform(MessageBuilder.withPayload(element).build()).getPayload();
 
@@ -97,10 +98,6 @@ public class SystemPropertiesService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        //        if (!applicationName.startsWith("/")) {
-//            baseContext.append("/");
-//        }
-//        baseContext.append(applicationName);
         pathRoot = "/" + zookeeperConfigProperties.getRoot() + "/" + zookeeperConfigProperties.getDefaultContext();
     }
 }

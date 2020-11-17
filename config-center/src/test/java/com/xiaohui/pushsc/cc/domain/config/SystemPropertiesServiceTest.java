@@ -40,12 +40,6 @@ public class SystemPropertiesServiceTest {
     }
 
     @Test
-    public void queryFromZk() {
-        SystemProperties properties = SystemProperties.buildFromEnv(environment);
-        log.info(JSON.toJSONString(properties));
-    }
-
-    @Test
     public void queryFromContext() {
         log.info(JSON.toJSONString(systemProperties));
     }

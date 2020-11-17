@@ -13,7 +13,6 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.5.RELEASE"
         // aspectj 插件
         classpath "io.freefair.gradle:aspectj-plugin:4.1.6"
-//        classpath "com.github.sedovalx.gradle:gradle-aspectj-binary:1.0.45"
     }
 
 }

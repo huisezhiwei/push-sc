@@ -1,5 +1,6 @@
 package com.xiaohui.pushsc.protocol.source;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import java.util.List;
@@ -11,16 +12,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DictionaryResource {
 
-    public Long id;
-    public String code;
-    public String key;
-    public String value;
+    private Long id;
+    private String code;
+    private String key;
+    private String value;
 
-    public String scope;
-    public int sort;
-    public boolean active;
-
-    public List<Long> subIds;
+    private String scope;
+    private Integer sort;
+    private Boolean active;
+    private Long parentId;
+    private List<Long> subIds;
 }

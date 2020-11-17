@@ -1,13 +1,14 @@
 package com.xiaohui.pushsc.cc.infranstructure.convert.objectmapper;
 
-import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleDeserializers;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.module.SimpleSerializers;
 import com.xiaohui.pushsc.cc.domain.dict.model.Dictionary;
 import com.xiaohui.pushsc.protocol.source.DictionaryResource;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
 
 import java.io.IOException;
 
